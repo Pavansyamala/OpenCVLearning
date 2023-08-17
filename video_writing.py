@@ -11,7 +11,7 @@ out = cv2.VideoWriter('output.mp4',fourcc,20.0,(640,480))
 
 while cap.isOpened():
     ret , frame = cap.read()
-
+    print(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     if ret == True :
 
         out.write(frame)

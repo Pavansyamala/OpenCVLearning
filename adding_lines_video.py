@@ -1,4 +1,4 @@
-import cv2
+ import cv2
 import datetime
 
 cap = cv2.VideoCapture(0)

@@ -19,16 +19,17 @@ for i in range(6):
 
 print(len(GaussianPyramids))
 '''
-Laplacian Pyramid :  
+Laplacian Pyramid :   
+
 image at ith position is given by (GaussianPyramid[i] - pyrUp(GuassianPyramid[i+1]))
 '''
 layer = GaussianPyramids[-1]
 laplacianPyramids = [layer] 
 
-for i in range(5,0,-1):
-    ge = cv2.pyrUp(GaussianPyramids[i]) 
-    print(ge.shape)
-    lpi = cv2.subtract(GaussianPyramids[i-1] , ge) 
+for i in range(6,0,-1):
+    ge = cv2.pyrUp(GaussianPyramids[i])
+    ge = cv2.resize(ge, GaussianPyramids[i-1].shape[:2][::-1])  # Resize ge to match the dimensions
+    lpi = cv2.subtract(GaussianPyramids[i-1], ge)
     laplacianPyramids.append(lpi) 
     cv2.imshow(str(i) , lpi)
 
